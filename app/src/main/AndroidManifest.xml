@@ -227,12 +227,13 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".policy.resetpassword.ResetPasswordService"
-                android:enabled="@bool/is_o_or_later"
-                android:exported="false"
-                android:foregroundServiceType="systemExempted"
-                android:directBootAware="true" >
-        </service>
+        <service
+            android:name=".policy.resetpassword.ResetPasswordService"
+            android:directBootAware="true"
+            android:enabled="@bool/is_o_or_later"
+            android:exported="false"
+            android:foregroundServiceType="systemExempted"
+            tools:ignore="ForegroundServicePermission" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
@@ -240,7 +241,7 @@
             tools:node="remove" />
 
         <provider
-                android:authorities="com.afwsamples.testdpc.fileprovider"
+                android:authorities="${applicationId}.fileprovider"
                 android:name="androidx.core.content.FileProvider"
                 android:grantUriPermissions="true"
                 android:exported="false">
@@ -250,7 +251,7 @@
         </provider>
 
         <provider
-                android:authorities="com.afwsamples.testdpc.usericoncontentprovider"
+                android:authorities="${applicationId}.usericoncontentprovider"
                 android:name="com.afwsamples.testdpc.UserIconContentProvider"
                 android:grantUriPermissions="true"
                 android:exported="true">
